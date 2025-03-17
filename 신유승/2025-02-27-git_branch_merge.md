@@ -2,7 +2,7 @@
 
 → 프로젝트에서 여러 작업을 나눠 병렬로 진행할 수 있는, 버전 관리의 각 분기점을 branch
 
-![alt text](img/image-4.png)
+![alt text](img/git_branch_img/image-4.png)
 
 하나의 개발 프로젝트에 참여하는 개발자가 둘이라고 가정
 → 한 명이 개발 다 하면 그 뒤로 다른 한 명이 개발할 것? << 시간 낭비
@@ -35,26 +35,26 @@
 
 ### 3-way merge
 
-![alt text](img/image-5.png)
+![alt text](img/git_branch_img/image-5.png)
 
 브랜치 각각 신규 커밋이 1회 이상 있는 경우, merge를 하면 두 브랜치의 코드를 합쳐서 새로운 커밋을 자동으로 생성해준다.
 
 ### fast-forward merge
 
-![alt text](img/image-6.png)
+![alt text](img/git_branch_img/image-6.png)
 
 새로운 브랜치에만 커밋이 있고, 기준이 되는 브랜치에는 신규 커밋이 없는 경우에 병합(merge commit이 생성되지 않음)
 
 - 조금 더 디테일하게 설명하자면..
     
-    ![alt text](img/image-7.png)
+    ![alt text](img/git_branch_img/image-7.png)
     
     1. master branch의 HEAD commit > B 인 상태에서 feature branch를 생성
     2. 생성된 feature branch는 새로운 커밋을 2개 생성 (X, Y)
     3. feature branch 커밋 내역을 확인 해보니, master branch의 모든 커밋을 가지고 있다. << master branch에 신규 커밋이 없다는 얘기
     4. master branch에서 feature branch를 merge하게 되면 fast-forward 방식으로 인해 단순히 master의 HEAD 위치가 commit Y로 이동하게 된다.
     
-    ![alt text](img/image-8.png)
+    ![alt text](img/git_branch_img/image-8.png)
     
     명령어로 merge를 진행해보니 merge commit이 생성되지 않고 fast-forward로 진행되었다고 알려주는 스윗보이 git
     
@@ -64,7 +64,7 @@
 </aside>
 
 ### rebase and merge
-![alt text](img/image-9.png)
+![alt text](img/git_branch_img/image-9.png)
 
 rebase: 신규 브랜치의 시작점을 main 브랜치의 최근 커밋으로 이동하는 것
 
@@ -96,13 +96,13 @@ rebase: 신규 브랜치의 시작점을 main 브랜치의 최근 커밋으로 �
 
 - 3-way merge의 단점
     
-    ![alt text](img/image-10.png)
+    ![alt text](img/git_branch_img/image-10.png)
     
     위 사진과 같이 git graph가 아주 더러워지는 것을 확인할 수 있음. 이를 방지하기 위해 rebase 혹은 squash를 선택하는 것
     
 - 스쿼시란?
     
-    ![alt text](img/image-11.png)
+    ![alt text](img/git_branch_img/image-11.png)
     
     3-way처럼 선으로 이어주지 않고, 새 브랜치의 코드 변경사항들을 병합하는 브랜치로 텔레포트 시켜주는 것
     
@@ -155,7 +155,7 @@ rebase: 신규 브랜치의 시작점을 main 브랜치의 최근 커밋으로 �
 
 1. git log로 커밋 아이디를 확인한다.
     
-    ![alt text](img/image-12.png)
+    ![alt text](img/git_branch_img/image-12.png)
     
     이 상황에서 testrebase 1과 testrebase 2를 squash하여 하나의 commit으로 만들어보자
     
@@ -165,24 +165,24 @@ rebase: 신규 브랜치의 시작점을 main 브랜치의 최근 커밋으로 �
     
 3. 위 명령어를 입력 시 vim이 켜진다.(위에서부터 오래된 커밋순)
     
-    ![alt text](img/image-13.png)
+    ![alt text](img/git_branch_img/image-13.png)
     
 4. i를 입력하면 수정할 수 있다.
 5. 아래 사진과 같이 testrebase 2 커밋 아이디 앞에 pick을 s로 바꾼다
     
-    ![alt text](img/image-14.png)
+    ![alt text](img/git_branch_img/image-14.png)
     
 6. esc → :wq를 입력하여 vim을 탈출한다.
 7. 2개의 커밋을 어떤 commit message로 합칠 것인지 적을 수 있는 vim 창이 나온다.
     
-    ![alt text](img/image-15.png)
+    ![alt text](img/git_branch_img/image-15.png)
     
 8. i를 누르고 맨 위에 commit message를 작성한 후 esc → :wq를 입력하여 vim을 탈출한다.
     
-    ![alt text](img/image-16.png)
+    ![alt text](img/git_branch_img/image-16.png)
     
 9. 그럼 잘 스쿼시 됐다고 메시지를 띄운다.
     
-    ![alt text](img/image-17.png)
+    ![alt text](img/git_branch_img/image-17.png)
     
 10. git log --oneline을 통해 확인도 해보자.
